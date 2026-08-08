@@ -19,7 +19,6 @@ const badgeFor = (status) => {
 
 const tableStyle = {
   width: '100%',
-  minWidth: '760px',
   borderCollapse: 'collapse',
   fontSize: 'var(--text-base)',
   marginTop: '8px',
@@ -30,7 +29,6 @@ const thStyle = {
   fontWeight: 600,
   borderBottom: '1px solid var(--color-hairline)',
   padding: '12px 16px',
-  whiteSpace: 'nowrap',
 };
 const tdStyle = {
   borderBottom: '1px solid var(--color-hairline)',
