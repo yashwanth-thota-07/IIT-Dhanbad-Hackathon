@@ -19,6 +19,7 @@ const badgeFor = (status) => {
 
 const tableStyle = {
   width: '100%',
+  minWidth: '760px',
   borderCollapse: 'collapse',
   fontSize: 'var(--text-base)',
   marginTop: '8px',
@@ -48,46 +49,48 @@ const QueueCard = ({ req, onActivate, onReject, busy }) => (
         <span>{req.company ? req.company.email : ''}</span>
         <span>Posted {fmtDate(req.createdAt)}</span>
       </div>
-      <table style={tableStyle}>
-        <thead>
-          <tr>
-            <th style={thStyle}>Item</th>
-            <th style={thStyle}>Qty (kg)</th>
-            <th style={thStyle}>Co. Price</th>
-            <th style={thStyle}>Farmer (50%)</th>
-            <th style={thStyle}>MM Fee</th>
-            <th style={thStyle}>Transport</th>
-            <th style={thStyle}>Handling</th>
-            <th style={thStyle}>AgriOS</th>
-            <th style={thStyle}>Viable</th>
-          </tr>
-        </thead>
-        <tbody>
-          {req.items.map((it, idx) => (
-            <tr key={idx}>
-              <td style={tdStyle}>
-                {it.name} <span className="muted">(G{it.qualityGrade || 'B'})</span>
-              </td>
-              <td style={tdStyle}>{fmt(it.quantity)}</td>
-              <td style={tdStyle}>₹{fmt(it.companyPricePerKg)}</td>
-              <td style={tdStyle}>₹{fmt(it.farmerPricePerKg)}</td>
-              <td style={tdStyle}>₹{fmt(it.middlemanFeePerKg)}</td>
-              <td style={tdStyle}>₹{fmt(it.transportCostPerKg)}</td>
-              <td style={tdStyle}>₹{fmt(it.handlingCostPerKg)}</td>
-              <td style={tdStyle}>₹{fmt(it.agriosRemainingValuePerKg)}</td>
-              <td style={tdStyle}>
-                {it.error ? (
-                  <span className="text-bad">{it.error}</span>
-                ) : it.isViable ? (
-                  <span className="text-ok">Yes</span>
-                ) : (
-                  <span className="text-bad">No</span>
-                )}
-              </td>
+      <div className="table-wrap">
+        <table style={tableStyle}>
+          <thead>
+            <tr>
+              <th style={thStyle}>Item</th>
+              <th style={thStyle}>Qty (kg)</th>
+              <th style={thStyle}>Co. Price</th>
+              <th style={thStyle}>Farmer (50%)</th>
+              <th style={thStyle}>MM Fee</th>
+              <th style={thStyle}>Transport</th>
+              <th style={thStyle}>Handling</th>
+              <th style={thStyle}>AgriOS</th>
+              <th style={thStyle}>Viable</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {req.items.map((it, idx) => (
+              <tr key={idx}>
+                <td style={tdStyle}>
+                  {it.name} <span className="muted">(G{it.qualityGrade || 'B'})</span>
+                </td>
+                <td style={tdStyle}>{fmt(it.quantity)}</td>
+                <td style={tdStyle}>₹{fmt(it.companyPricePerKg)}</td>
+                <td style={tdStyle}>₹{fmt(it.farmerPricePerKg)}</td>
+                <td style={tdStyle}>₹{fmt(it.middlemanFeePerKg)}</td>
+                <td style={tdStyle}>₹{fmt(it.transportCostPerKg)}</td>
+                <td style={tdStyle}>₹{fmt(it.handlingCostPerKg)}</td>
+                <td style={tdStyle}>₹{fmt(it.agriosRemainingValuePerKg)}</td>
+                <td style={tdStyle}>
+                  {it.error ? (
+                    <span className="text-bad">{it.error}</span>
+                  ) : it.isViable ? (
+                    <span className="text-ok">Yes</span>
+                  ) : (
+                    <span className="text-bad">No</span>
+                  )}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       <div className="card-actions">
         <button className="btn btn-approve" disabled={busy} onClick={() => onActivate(req.id)}>Activate Deal</button>
         <button className="btn btn-reject" disabled={busy} onClick={() => onReject(req.id)}>Reject</button>
