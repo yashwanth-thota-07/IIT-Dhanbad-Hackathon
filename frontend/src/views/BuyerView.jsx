@@ -111,35 +111,47 @@ export default function BuyerView() {
           <div className="item-rows">
             {items.map((item, index) => (
               <div key={index} className="item-row">
-                <input 
-                  placeholder="Vegetable Name" 
-                  value={item.name}
-                  onChange={(e) => handleItemChange(index, 'name', e.target.value)}
-                  required
-                />
-                <input 
-                  placeholder="Qty in kg" 
-                  value={item.quantity}
-                  onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
-                  required
-                />
-                <input 
-                  placeholder="Company Price ₹/kg" 
-                  type="text" 
-                  inputMode="decimal"
-                  autoComplete="off"
-                  value={item.companyPricePerKg}
-                  onChange={(e) => handleItemChange(index, 'companyPricePerKg', stripDecimal(e.target.value))}
-                  required
-                />
-                <select
-                  value={item.qualityGrade}
-                  onChange={(e) => handleItemChange(index, 'qualityGrade', e.target.value)}
-                >
-                  <option value="A">Grade A</option>
-                  <option value="B">Grade B</option>
-                  <option value="C">Grade C</option>
-                </select>
+                <label className="field">
+                  <span>Vegetable Name</span>
+                  <input
+                    placeholder="e.g., Tomato"
+                    value={item.name}
+                    onChange={(e) => handleItemChange(index, 'name', e.target.value)}
+                    required
+                  />
+                </label>
+                <label className="field">
+                  <span>Qty in kg</span>
+                  <input
+                    placeholder="e.g., 10000"
+                    value={item.quantity}
+                    onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
+                    required
+                  />
+                </label>
+                <label className="field">
+                  <span>Company Price ₹/kg</span>
+                  <input
+                    placeholder="e.g., 40"
+                    type="text"
+                    inputMode="decimal"
+                    autoComplete="off"
+                    value={item.companyPricePerKg}
+                    onChange={(e) => handleItemChange(index, 'companyPricePerKg', stripDecimal(e.target.value))}
+                    required
+                  />
+                </label>
+                <label className="field">
+                  <span>Grade</span>
+                  <select
+                    value={item.qualityGrade}
+                    onChange={(e) => handleItemChange(index, 'qualityGrade', e.target.value)}
+                  >
+                    <option value="A">Grade A</option>
+                    <option value="B">Grade B</option>
+                    <option value="C">Grade C</option>
+                  </select>
+                </label>
                 {items.length > 1 && (
                   <button type="button" className="btn btn-danger" onClick={() => removeItemRow(index)}>X</button>
                 )}
