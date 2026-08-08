@@ -33,8 +33,8 @@ const farmerProcurementSchema = new mongoose.Schema(
         },
         farmerName: {
             type: String,
-            required: true,
             trim: true,
+            default: null,
         },
         farmerPhone: {
             type: String,
