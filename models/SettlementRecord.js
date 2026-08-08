@@ -3,14 +3,15 @@ const mongoose = require("mongoose");
 const settlementItemSchema = new mongoose.Schema({
     vegetable: { type: String, required: true },
     quantityKg: { type: Number, required: true },
-    companyValue: { type: Number, required: true },
+    companyValue: { type: Number, required: false },
     actualFarmerPayment: { type: Number, required: true },
-    middlemanEarnings: { type: Number, required: true },
-    transportCost: { type: Number, required: true },
-    handlingCost: { type: Number, required: true },
-    agriosRemainingValue: { type: Number, required: true },
-    reconciliationStatus: { type: String, enum: ["RECONCILED", "MISMATCH"], required: true }
+    middlemanEarnings: { type: Number, required: false },
+    transportCost: { type: Number, required: false },
+    handlingCost: { type: Number, required: false },
+    agriosRemainingValue: { type: Number, required: false },
+    reconciliationStatus: { type: String, enum: ["RECONCILED", "MISMATCH"], required: false }
 }, { _id: false });
+
 
 const settlementRecordSchema = new mongoose.Schema(
     {
