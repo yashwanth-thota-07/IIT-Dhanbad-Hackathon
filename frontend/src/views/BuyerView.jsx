@@ -112,19 +112,19 @@ export default function BuyerView() {
             {items.map((item, index) => (
               <div key={index} className="item-row">
                 <input 
-                  placeholder="Produce Name (e.g., Tomato)" 
+                  placeholder="Vegetable Name" 
                   value={item.name}
                   onChange={(e) => handleItemChange(index, 'name', e.target.value)}
                   required
                 />
                 <input 
-                  placeholder="Qty (e.g., 10000)" 
+                  placeholder="Qty in kg" 
                   value={item.quantity}
                   onChange={(e) => handleItemChange(index, 'quantity', e.target.value)}
                   required
                 />
                 <input 
-                  placeholder="Company Price ₹/kg (e.g., 40)" 
+                  placeholder="Company Price ₹/kg" 
                   type="text" 
                   inputMode="decimal"
                   autoComplete="off"
