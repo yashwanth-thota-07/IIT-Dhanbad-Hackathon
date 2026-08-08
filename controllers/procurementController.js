@@ -9,8 +9,8 @@ const recordProcurement = async (req, res) => {
         const { vegetable, quantityKg, agreedFarmerPricePerKg, farmerName, farmerPhone, farmerLocation } = req.body;
 
         // 1. Validate inputs
-        if (!vegetable || !quantityKg || agreedFarmerPricePerKg === undefined || !farmerName) {
-            return res.status(400).json({ message: "vegetable, quantityKg, agreedFarmerPricePerKg, and farmerName are required." });
+        if (!vegetable || !quantityKg || agreedFarmerPricePerKg === undefined) {
+            return res.status(400).json({ message: "vegetable, quantityKg, and agreedFarmerPricePerKg are required." });
         }
         if (Number(quantityKg) <= 0 || Number(agreedFarmerPricePerKg) < 0) {
             return res.status(400).json({ message: "Invalid quantity or price." });
