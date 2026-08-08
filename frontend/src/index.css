@@ -737,6 +737,8 @@ button:focus-visible {
    ------------------------------------------------------------ */
 .table-wrap {
   overflow-x: auto;
+  min-width: 0;
+  width: 100%;
 }
 
 .deal-summary {
@@ -829,13 +831,17 @@ button:focus-visible {
   display: flex;
   gap: 12px;
   margin-bottom: 12px;
-  align-items: center;
+  align-items: flex-end;
 }
 
-.item-row input:nth-child(1) { flex: 2; }
-.item-row input:nth-child(2) { flex: 1; }
-.item-row input:nth-child(3) { flex: 1; }
-.item-row select:nth-child(4) { flex: 0.8; }
+.item-row .field:nth-child(1) { flex: 2; }
+.item-row .field:nth-child(2) { flex: 1; }
+.item-row .field:nth-child(3) { flex: 1; }
+.item-row .field:nth-child(4) { flex: 0.8; }
+
+.item-row .field {
+  min-width: 0;
+}
 
 .item-row input,
 .item-row select {
